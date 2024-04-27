@@ -1,9 +1,10 @@
 return {
-  'nvim-telescope/telescope.nvim', tag = '0.1.6',
-  dependencies = { 
-    'nvim-lua/plenary.nvim',
-    { 'nvim-telescope/telescope-fzf-native.nvim', build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' },
-    'nvim-tree/nvim-web-devicons',
+  "nvim-telescope/telescope.nvim",
+  branch = "0.1.x",
+  dependencies = {
+    "nvim-lua/plenary.nvim",
+    { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+    "nvim-tree/nvim-web-devicons",
   },
   config = function()
     local telescope = require("telescope")
@@ -22,7 +23,7 @@ return {
       },
     })
 
-   -- telescope.load_extension("fzf")
+    -- telescope.load_extension("fzf")
 
     -- set keymaps
     local keymap = vim.keymap -- for conciseness
@@ -31,6 +32,5 @@ return {
     keymap.set("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "Fuzzy find recent files" })
     keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>", { desc = "Find string in cwd" })
     keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })
-    keymap.set("n", "<leader>fg", "<cmd>Telescope git_files<cr>", { desc = "Find string in git files" })
   end,
 }
